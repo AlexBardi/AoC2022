@@ -12,12 +12,12 @@ input = open(dir_path + "\input.txt").read().strip('\n\n').split("\n")
 
 totalPriority = 0
 
-for line in input:
-    compartment1 = set([char for char in line[0:(len(line)//2)]])
-    compartment2 = set([char for char in line[(len(line)//2):]])
-    commonLetter = list(compartment1.intersection(compartment2))[0]
+for idx in range(len(input) // 3):
+    rucksack1 = set([char for char in input[(idx * 3)]])
+    rucksack2 = set([char for char in input[(idx * 3) + 1]])
+    rucksack3 = set([char for char in input[(idx * 3) + 2]])
+    commonLetter = list(rucksack1.intersection(rucksack2.intersection(rucksack3)))[0]
     totalPriority += priority(commonLetter)
 
+# 2518
 print(totalPriority)
-
-# 8018 *
